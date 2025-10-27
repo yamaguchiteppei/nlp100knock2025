@@ -1,0 +1,1 @@
+head -10 popular-names.txt > popular-names1.txt ; cut -l 1 popular-names1.txt
