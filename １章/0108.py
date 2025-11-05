@@ -1,10 +1,22 @@
-def cipher(s):
-    for i in range(len(s)):
-        if s[i].islower():
-            print(ord(s[i]))
-        else:
-            print(s[i])
-    
+"""08. 暗号文
+与えられた文字列の各文字を、以下の仕様で変換する関数cipherを実装せよ。
+・英小文字ならば (219 - 文字コード) のASCIIコードに対応する文字に置換
+・その他の文字はそのまま出力
+この関数を用い、英語のメッセージを暗号化・復号化せよ。"""
 
-cipher("ThankYou")
+def cipher(s):
+    result=""
+    for ch in s:
+        if ch.islower():
+            result += chr(219-ord(ch))
+        else:
+            result += ch
+    return result    
+
+text = "Thank You"
+encrypted =cipher(text)
+print("暗号化:",encrypted)
+
+decrypted = cipher(encrypted)
+print("復号化:",decrypted)
             
