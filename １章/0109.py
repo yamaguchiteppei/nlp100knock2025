@@ -1,20 +1,19 @@
 import random
+s ="I couldn't believe that I could actually understand what I was reading: the phenomenal power of the human mind."
 
-def s_random(s):
-    words1 = []
-    words = s.split()
+words = s.split()
+new_words =[]
+char = []
+def  typoglycemia(words):
     for i in range(len(words)):
         if len(words[i]) > 4:
-            chars = list(words[i])
-            first = chars[0]
-            middle = chars[1:len(chars)-2]
-            last = chars[len(chars)-1]
+            first = words[i][0]
+            last = words[i][len(words[i])-1]
+            middle = list(words[i][1:len(words[i])-1])
             random.shuffle(middle)
-            words1[i]= first + middle + last
+            new_words.append(first+''.join(middle)+last)
         else:
-            words1[i]= words[i]
-    
-    return words
+            new_words.append(words[i])
+    return " ".join(new_words)
 
-s="I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind."
-print(s_random(s))
+print(typoglycemia(words))
