@@ -1,0 +1,4 @@
+wc -l popular-names.txt
+
+//実行結果
+2781 popular-names.txt
