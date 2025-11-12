@@ -1,1 +1,5 @@
 split -n 10 popular-names.txt
+
+//実行結果
+popular-names.txt   xab  xae  xah  xac  xaf  xai
+xaa   xad  xag  xaj
