@@ -16,3 +16,22 @@ for sent in doc.sents:
     for word in sent:
         if word.pos_ =="VERB":
             print(word)
+            
+
+"""実行結果
+激怒
+邪智
+除か
+なら
+決意
+わから
+ある
+吹き
+遊ん
+暮し
+来
+対し
+あっ
+"""
+
+

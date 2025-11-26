@@ -17,3 +17,8 @@ for sent in doc.sents:
     for i in range(len(tokens)-1):
         if tokens[i].pos_ == "NOUN" and tokens[i+1].text == "の" and tokens[i+2].pos_ == "NOUN":
             print(f"{tokens[i].text}の{tokens[i+2].text}")
+
+""""実行結果
+暴虐の王
+村の牧人
+"""

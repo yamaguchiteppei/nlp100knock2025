@@ -77,3 +77,29 @@ top20 = sorted(tfidf.items(), key=lambda x: x[1], reverse=True)[:20]
 print("===== TF-IDF 上位20語 =====")
 for word, score in top20:
     print(f"{word:20}  TF={tf[word]:3}  IDF={idf[word]:.3f}  TF-IDF={score:.3f}")
+
+"""実行結果
+単語	出現頻度
+年	27900
+月	11892
+日	7762
+
+
+	7532
+人	6463
+こと	4552
+%	4214
+世界	3569
+語	3262
+ため	3045
+政府	3029
+島	3023
+第	3017
+|	2996
+大統領	2936
+国	2905
+}	2635
+ファイル	2431
+経済	2254
+人口	2232
+"""

@@ -23,3 +23,7 @@ for sent in doc.sents:
                 head = head.head
             if head.pos_ in ["VERB","AUX"]:
                 print(f"主語:メロス→述語:{head.lemma_}")
+"""実行結果
+主語:メロス→述語:激怒
+主語:メロス→述語:わかる
+"""               

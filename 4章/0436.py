@@ -1,56 +1,110 @@
-import gzip
-import json
 import re
-from collections import Counter
 import spacy
+from collections import Counter
+import pandas as pd
+from tqdm import tqdm
 
-# ===== (1) Wikipedia マークアップ除去関数 =====
-def clean_wiki(text):
-    text = re.sub(r"'{2,5}", "", text)                                 # 強調
-    text = re.sub(r'\[\[([^|\]]+)\|([^]]+)\]\]', r'\2', text)          # [[A|B]]
-    text = re.sub(r'\[\[([^]]+)\]\]', r'\1', text)                     # [[A]]
-    text = re.sub(r'\[https?://[^\s]+ (\S+)\]', r'\1', text)           # 外部リンク
-    text = re.sub(r'\[https?://[^\]]+\]', '', text)
-    text = re.sub(r'<ref[^>]*>.*?</ref>', '', text)                    # <ref>
-    text = re.sub(r'<ref[^>]*/>', '', text)
-    text = re.sub(r'<[^>]+>', '', text)                                # HTMLタグ
-    text = re.sub(r'\{\{lang\|[^|]+\|([^}]+)\}\}', r'\1', text)        # langテンプレ
-    text = re.sub(r'\{\{[^}]+\}\}', '', text)                          # その他テンプレ
-    text = re.sub(r'==.*?==', '', text)                                # 見出し
+open_file = "4章/jawiki-country.json.gz"
+
+# === GiNZAロード（重いNERとParserを無効化） ===
+nlp = spacy.load("ja_ginza")
+nlp.disable_pipes("ner", "parser")
+
+# === 正規表現の事前コンパイル ===
+patterns = [
+    r"'{2,5}",                     # 強調
+    r"\[\[(?:[^|\]]*\|)?([^|\]]+)\]\]",  # 内部リンク
+    r"\[(https?://\S+)(?: \S+)?\]",       # 外部リンク
+    r"<[^>]+>",                    # HTMLタグ
+    r"\{\{.*?\}\}",                # テンプレート
+]
+compiled_pattern = re.compile("|".join(patterns), re.MULTILINE)
+
+def remove_markup(text):
+    """Wikipediaマークアップを再帰的に除去"""
+    old = ""
+    while old != text:
+        old = text
+        text = compiled_pattern.sub(lambda m: m.group(1) if m.lastindex else "", text)
     return text
 
+def split_text_by_bytes(text, max_bytes=49149):
+    """Sudachi制限回避のためUTF-8バイト長で分割"""
+    encoded = text.encode("utf-8")
+    if len(encoded) <= max_bytes:
+        return [text]
 
-# ===== (2) GiNZAをロード =====
-nlp = spacy.load("ja_ginza")
-counter = Counter()
+    chunks = []
+    for i in range(0, len(encoded), max_bytes):
+        chunk = encoded[i:i + max_bytes]
+        chunks.append(chunk.decode("utf-8", errors="ignore"))
+    return chunks
 
-# ===== (3) Wikipedia JSON.gz ファイル =====
-path = r"C:\Users\哲平\workspace\nlp100knock2025\4章\jawiki-country.json.gz"
+def main():
+    # ===== Wikipedia JSON 読み込み =====
+    df = pd.read_json(open_file, lines=True, compression="gzip")
+    
+    # ===== マークアップ除去 =====
+    df["cleaned"] = df["text"].apply(remove_markup)
 
-# ===== (4) 巨大ファイル → 記事ごとに安全に解析 =====
-with gzip.open(path, "rt", encoding="utf-8") as f:
-    for line in f:
-        article = json.loads(line)
-        cleaned = clean_wiki(article["text"])
+    # ===== Sudachi対策：記事を分割 =====
+    df["chunks"] = df["cleaned"].apply(split_text_by_bytes)
 
-        # 長すぎる文章でGiNZAが落ちないように分割
-        parts = re.split(r"\n{2,}", cleaned)
+    # 行へ展開
+    text_series = df.explode("chunks")["chunks"]
+    text_series = text_series[text_series.str.strip() != ""]
 
-        for part in parts:
-            if not part.strip():
-                continue
+    # ===== 品詞のターゲット =====
+    target_pos = {"NOUN", "VERB", "ADJ", "ADV"}
 
-            # GiNZAで解析
-            doc = nlp(part)
+    all_words = []
 
-            # ===== (5) 全品詞の“単語（形態素）”をカウント =====
-            for token in doc:
-                if token.pos_ not in ["SPACE"]:
-                    # surface ではなく lemma_（辞書形）で統一
-                    counter[token.lemma_] += 1
+    tqdm_series = tqdm(text_series, desc="形態素解析中", total=len(text_series))
+
+    # ===== GiNZAパイプで高速解析 =====
+    docs = nlp.pipe(
+        tqdm_series,
+        batch_size=200,
+        n_process=4,
+    )
+
+    for doc in docs:
+        for token in doc:
+            if token.pos_ in target_pos:
+                all_words.append(token.lemma_)   # ← 辞書形でカウント
+
+    # ===== 出現頻度 =====
+    counts = Counter(all_words).most_common(20)
+
+    print("単語\t頻度")
+    for w, c in counts:
+        print(f"{w}\t{c}")
+
+if __name__ == "__main__":
+    main()
+
+"""実行結果
+単語	出現頻度
+年	27900
+いる	13325
+月	11892
+ある	11615
+日	7762
 
 
-# ===== (6) 上位20語を表示 =====
-print("=== 出現頻度トップ20 ===")
-for word, freq in counter.most_common(20):
-    print(word, freq)
+	7534
+人	6463
+なっ	4680
+こと	4552
+%	4215
+い	3769
+世界	3569
+あり	3479
+語	3262
+|	3051
+ため	3046
+政府	3031
+島	3023
+第	3017
+大統領	2938
+"""
