@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from tqdm import tqdm
 
-open_file = "C:\Users\哲平\workspace\nlp100knock2025>C:/Users/哲平/AppData/Local/Programs/Python/Python313/python.exe c:/Users/哲平/workspace/nlp100knock2025/4章/0439.py"
+open_file = "4章/jawiki-country.json.gz"
 nlp = spacy.load('ja_ginza')
 
 # 正規表現パターンを事前にコンパイル

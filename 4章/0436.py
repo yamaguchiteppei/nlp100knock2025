@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 open_file = "4章/jawiki-country.json.gz"
 
-# === GiNZAロード（重いNERとParserを無効化） ===
+# GiNZAロード（重いNERとParserを無効化） ===
 nlp = spacy.load("ja_ginza")
 nlp.disable_pipes("ner", "parser")
 

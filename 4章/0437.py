@@ -5,7 +5,7 @@ import math
 from collections import Counter, defaultdict
 import spacy
 
-# ======== Wikipedia マークアップ除去 ========
+#  Wikipedia マークアップ除去
 def clean_wiki(text):
     text = re.sub(r"'{2,5}", "", text)
     text = re.sub(r'\[\[([^|\]]+)\|([^]]+)\]\]', r'\2', text)
@@ -20,17 +20,17 @@ def clean_wiki(text):
     text = re.sub(r'==.*?==', '', text)
     return text
 
-# ======== GiNZA ロード ========
+# GiNZA ロード
 nlp = spacy.load("ja_ginza")
 
-# ======== JSON.gz のパス ========
+# JSON.gz のパス 
 path = r"C:\Users\哲平\workspace\nlp100knock2025\4章\jawiki-country.json.gz"
 
-# ======== 全体のドキュメント数 ========
+#  全体のドキュメント数 
 documents = []
 japan_text = None
 
-# ======== 全記事を走査 ========
+# 全記事を走査 
 with gzip.open(path, "rt", encoding="utf-8") as f:
     for line in f:
         article = json.loads(line)
@@ -43,7 +43,7 @@ with gzip.open(path, "rt", encoding="utf-8") as f:
         if title == "Japan" or title == "日本":
             japan_text = text
 
-# ======== 形態素解析して TF 計算（日本の記事のみ） ========
+# 形態素解析して TF 計算（日本の記事のみ）
 tf = Counter()
 doc = nlp(japan_text)
 
@@ -51,7 +51,7 @@ for token in doc:
     if token.pos_ == "NOUN":
         tf[token.lemma_] += 1
 
-# ======== IDF 計算 ========
+# IDF 計算 
 df = defaultdict(int)
 N = len(documents)
 
@@ -68,38 +68,13 @@ for text in documents:
 
 idf = {w: math.log((N + 1) / (df[w] + 1)) + 1 for w in df}
 
-# ======== TF-IDF 計算 ========
+# TF-IDF 計算 
 tfidf = {w: tf[w] * idf.get(w, 0) for w in tf}
 
-# ======== 上位20語を表示 ========
+# 上位20語を表示 
 top20 = sorted(tfidf.items(), key=lambda x: x[1], reverse=True)[:20]
 
 print("===== TF-IDF 上位20語 =====")
 for word, score in top20:
     print(f"{word:20}  TF={tf[word]:3}  IDF={idf[word]:.3f}  TF-IDF={score:.3f}")
 
-"""実行結果
-単語	出現頻度
-年	27900
-月	11892
-日	7762
-
-
-	7532
-人	6463
-こと	4552
-%	4214
-世界	3569
-語	3262
-ため	3045
-政府	3029
-島	3023
-第	3017
-|	2996
-大統領	2936
-国	2905
-}	2635
-ファイル	2431
-経済	2254
-人口	2232
-"""
