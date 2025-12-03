@@ -7,7 +7,7 @@ doc = nlp("メロスは激怒した。")
 
 html = displacy.render(doc, style="dep", page=True)
 
-with open("result.html", "w", encoding="utf-8") as f:
+with open("./result.html", "w", encoding="utf-8") as f:
     f.write(html)
 
 """result.htmlの中身
