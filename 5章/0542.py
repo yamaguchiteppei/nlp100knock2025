@@ -7,29 +7,6 @@ from pathlib import Path
 import time
 import re
 
-def call_model_with_retry(model, prompt, max_retries=5):
-    for attempt in range(max_retries):
-        try:
-            response = model.generate_content(prompt)
-            return response.text
-        except Exception as e:
-            msg = str(e)
-
-            # 429エラーか確認
-            if "429" in msg and "retry" in msg.lower():
-                # retry_delay を抽出（なければデフォルト20秒）
-                m = re.search(r"retry in ([0-9\.]+)s", msg)
-                wait = float(m.group(1)) if m else 20.0
-                print(f"429: レート制限。{wait}秒待機します...")
-                time.sleep(wait)
-                continue
-            else:
-                print("その他のエラー:", e)
-                return None
-    print("最大リトライ回数を超えました。")
-    return None
-
-
 # 環境変数からAPIキーを読み込む
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
@@ -198,3 +175,12 @@ if __name__ == "__main__":
     num_questions = None  # Noneを指定すると全問題を評価
 
     evaluate_model(subject, num_questions)
+    
+#Gemini 無料枠（Free Tier）は 1分間に10回までしか API を叩けないため、実行結果が不適切になった
+"""実行結果
+進捗: 150/150 (正解率: 21.3%)
+
+評価結果:
+正解数: 32/150
+正解率: 21.3%
+"""

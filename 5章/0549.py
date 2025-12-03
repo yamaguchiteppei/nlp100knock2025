@@ -32,15 +32,14 @@ prompt = f"""
 # モデルの設定
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-# トークン数を計測
-response = model.generate_content(prompt)
-
-# 結果の表示
-print("トークン数計測結果:")
-print(response.text)
 
 # Geminiのトークンカウント機能を使用
 print("\nGeminiのトークンカウント機能を使用:")
 # トークン数を計測
 token_count = model.count_tokens(text)
 print(f"トークン数: {token_count}")
+
+"""実行結果
+Geminiのトークンカウント機能を使用:
+トークン数: total_tokens: 271
+"""
