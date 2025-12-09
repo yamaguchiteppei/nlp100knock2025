@@ -4,7 +4,7 @@ import pandas as pd
 from gensim.models import KeyedVectors
 from scipy.cluster.hierarchy import dendrogram, linkage
 
-df = pd.read_csv("ch06/questions-words.txt", sep=" ")
+df = pd.read_csv("questions-words.txt", sep=" ")
 df = df.reset_index()
 df.columns = ["v1", "v2", "v3", "v4"]
 df.dropna(inplace=True)
@@ -12,7 +12,7 @@ df = df.iloc[:5030]
 country = list(set(df["v4"].values))
 
 model = KeyedVectors.load_word2vec_format(
-    "ch06/GoogleNews-vectors-negative300.bin", binary=True
+    "GoogleNews-vectors-negative300.bin", binary=True
 )
 
 countryVec = []
@@ -25,4 +25,4 @@ X = np.array(countryVec)
 linkage_result = linkage(X, method="ward", metric="euclidean")
 plt.figure(num=None, figsize=(16, 9), dpi=200, facecolor="w", edgecolor="k")
 dendrogram(linkage_result, labels=countryName)
-plt.show()
+plt.savefig("dendrogram.png")

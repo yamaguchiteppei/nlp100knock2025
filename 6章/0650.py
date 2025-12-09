@@ -1,4 +1,4 @@
-from gensim.models import KeyedVectors as kv
+from gensim.models import KeyedVectors as kv 
 
 # Google News word2vec の読み込み
 model_path = "GoogleNews-vectors-negative300.bin"
