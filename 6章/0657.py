@@ -82,11 +82,10 @@ for cl in range(k):
     print(", ".join(names))
 
 
-# ==================================
-# ⑥ 結果をCSV保存（必要な場合）
-# ==================================
+# 結果をCSV保存（必要な場合）
 df_result.to_csv("country_cluster_result.csv", index=False)
 print("\nSaved: country_cluster_result.csv")
+
 
 # 実行結果
 """
