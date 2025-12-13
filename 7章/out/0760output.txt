@@ -1,0 +1,6 @@
+#実行結果
+train.tsvにおいて
+positive: 37569個, negative: 29780個
+
+dev.tsvにおいて
+positive: 444個, negative: 428個
