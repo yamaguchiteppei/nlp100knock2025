@@ -1,0 +1,10 @@
+Epoch 1: Train Loss 0.6408, Train Acc 62.25%, Dev Acc 59.06%
+Epoch 2: Train Loss 0.5744, Train Acc 75.01%, Dev Acc 67.89%
+Epoch 3: Train Loss 0.5349, Train Acc 79.17%, Dev Acc 71.56%
+Epoch 4: Train Loss 0.5087, Train Acc 80.51%, Dev Acc 75.57%
+Epoch 5: Train Loss 0.4899, Train Acc 81.33%, Dev Acc 75.00%
+Epoch 6: Train Loss 0.4757, Train Acc 81.65%, Dev Acc 77.64%
+Epoch 7: Train Loss 0.4646, Train Acc 81.94%, Dev Acc 77.52%
+Epoch 8: Train Loss 0.4555, Train Acc 82.10%, Dev Acc 77.52%
+Epoch 9: Train Loss 0.4481, Train Acc 82.24%, Dev Acc 77.87%
+Epoch 10: Train Loss 0.4417, Train Acc 82.32%, Dev Acc 77.98%

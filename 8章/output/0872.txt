@@ -1,0 +1,5 @@
+MeanEmbeddingClassifier(
+  (linear): Linear(in_features=300, out_features=1, bias=True)
+)
+X_train: torch.Size([66650, 300])
+y_train: torch.Size([66650])

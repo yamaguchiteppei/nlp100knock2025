@@ -1,0 +1,2 @@
+Vocabulary size: 3000000
+Embedding matrix shape: (3000001, 300)

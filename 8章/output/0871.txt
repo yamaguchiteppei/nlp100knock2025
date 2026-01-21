@@ -1,0 +1,7 @@
+訓練データ数: 66650
+開発データ数: 872
+
+訓練データのサンプル:
+テキスト: hide new secretions from the parental units 
+ラベル: tensor([0.])
+トークンID列: tensor([ 4357,   152,  1150,  7530, 10949,  2545, 10974])

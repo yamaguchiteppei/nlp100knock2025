@@ -1,0 +1,6 @@
+Epoch 1, Loss: 0.6262
+Epoch 2, Loss: 0.6153
+Epoch 3, Loss: 0.6046
+Epoch 4, Loss: 0.5940
+Epoch 5, Loss: 0.5835
+開発セット正解率: 1.0
