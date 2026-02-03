@@ -1,0 +1,6 @@
+Loading weights: 100%|█████████| 138/138 [00:00<00:00, 2717.09it/s, Materializing param=model.layers.21.mlp_norm.weight]
+NEGATIVE        The movie was full of incomprehensibilities.
+POSITIVE        The movie was full of fun.
+POSITIVE        The movie was full of excitement.
+NEGATIVE        The movie was full of crap.
+NEGATIVE        The movie was full of rubbish.

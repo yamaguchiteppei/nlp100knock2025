@@ -1,0 +1,21 @@
+Loading weights: 100%|█| 202/202 [00:00<00:00, 2564.22it/s, Materializing param=cls.predictions.transform.dense.weight]
+BertForMaskedLM LOAD REPORT from: bert-base-uncased
+Key                         | Status     |  | 
+----------------------------+------------+--+-
+cls.seq_relationship.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight | UNEXPECTED |  | 
+bert.pooler.dense.weight    | UNEXPECTED |  | 
+bert.pooler.dense.bias      | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+fun     0.107
+surprises       0.066
+drama   0.045
+stars   0.027
+laughs  0.025
+action  0.020
+excitement      0.019
+people  0.018
+tension 0.015
+music   0.015
