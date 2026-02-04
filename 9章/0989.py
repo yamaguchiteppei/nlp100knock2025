@@ -4,6 +4,11 @@ from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModel
 import pandas as pd
 
+# Max Poolingとは？
+#複数のベクトル（トークン表現）の中から、
+#各次元ごとに最大値だけを取り出して、1つのベクトルにする操作
+
+
 # =========================
 # 設定
 # =========================
