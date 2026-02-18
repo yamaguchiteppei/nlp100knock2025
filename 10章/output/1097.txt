@@ -1,0 +1,18 @@
+$ python3 1097.py
+device: cuda
+Loading weights: 100%|█████████████████████| 199/199 [00:00<00:00, 2415.40it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored w:36<00:02, 21.74it/s]The attention mask and the pad token id were not set. As a consequence, you ma
+Epoch 1 Loss: 0.1988226835288532l
+Epoch 2 Loss: 0.10563475321994922
