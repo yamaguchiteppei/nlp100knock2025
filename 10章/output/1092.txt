@@ -1,0 +1,47 @@
+Loading weights: 100%|█████████████████| 148/148 [00:00<00:00, 2184.69it/s, Materializing param=transformer.wte.weight]
+GPT2LMHeadModel LOAD REPORT from: gpt2
+Key                  | Status     |  | 
+---------------------+------------+--+-
+h.{0...11}.attn.bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+生成されたテキストと各単語の尤度:
+The movie was full of jokes
+単語:  jokes, 尤度: 0.0820
+--------------------------------------------------
+The movie was full of jokes when
+単語:  when, 尤度: 0.0037
+--------------------------------------------------
+The movie was full of jokes when he
+単語:  he, 尤度: 0.0700
+--------------------------------------------------
+The movie was full of jokes when he was
+単語:  was, 尤度: 0.2792
+--------------------------------------------------
+The movie was full of jokes when he was writing
+単語:  writing, 尤度: 0.0099
+--------------------------------------------------
+The movie was full of jokes when he was writing it
+単語:  it, 尤度: 0.4458
+--------------------------------------------------
+The movie was full of jokes when he was writing it .
+単語: ., 尤度: 0.3060
+--------------------------------------------------
+The movie was full of jokes when he was writing it . 
+
+単語: 
+, 尤度: 0.1455
+--------------------------------------------------
+The movie was full of jokes when he was writing it . 
+ 
+
+単語: 
+, 尤度: 0.9984
+--------------------------------------------------
+The movie was full of jokes when he was writing it . 
+ 
+ This
+単語: This, 尤度: 0.0085
+--------------------------------------------------

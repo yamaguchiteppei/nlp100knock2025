@@ -1,0 +1,21 @@
+Loading weights: 100%|█████████████████| 148/148 [00:00<00:00, 1455.79it/s, Materializing param=transformer.wte.weight]
+GPT2LMHeadModel LOAD REPORT from: gpt2
+Key                  | Status     |  | 
+---------------------+------------+--+-
+h.{0...11}.attn.bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+=== Perplexity ===
+The movie was full of surprises
+`loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+PPL: 99.355
+
+The movies were full of surprises
+PPL: 126.481
+
+The movie were full of surprises
+PPL: 278.880
+
+The movies was full of surprises
+PPL: 274.659

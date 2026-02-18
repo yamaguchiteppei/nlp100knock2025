@@ -1,0 +1,59 @@
+Loading weights: 100%|█████████████████| 148/148 [00:00<00:00, 2319.49it/s, Materializing param=transformer.wte.weight]
+GPT2LMHeadModel LOAD REPORT from: gpt2
+Key                  | Status     |  | 
+---------------------+------------+--+-
+h.{0...11}.attn.bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+=== Greedy ===
+The movie was full of jokes and jokes about how the movie was a joke. It was a joke
+
+=== Temperature 0.5 ===
+The movie was full of good jokes about how the world was "out of control" and "out
+The movie was full of big, ugly, bad, and disgusting scenes. It was a lot of
+The movie was full of surprises, but it didn't have a lot of surprises.
+
+"
+
+=== Temperature 1.0 ===
+The movie was full of a lot of good stuff, but not the stories."
+
+What was
+The movie was full of jokes, but they all lacked the character.
+
+The main thrust of
+The movie was full of all the action of a movie: two guys driving a jeep and an
+
+=== Temperature 1.5 ===
+The movie was full of cringe and bad jokes when shot on location, but it kept the audience in
+The movie was full of jokes about death, as was all the jokes involving money, and death itself
+The movie was full of spoilers at the height of the show, so now that the episode has come
+
+=== Top-k Sampling ===
+The movie was full of crazy violence, which only got worse.
+
+At one point some dudes
+The movie was full of great ideas that I didn't think of as anything more than fantasy. At
+The movie was full of interesting moments in which the character's parents came into the house and said "
+
+=== Top-p Sampling ===
+The movie was full of some great, memorable moments, but it doesn't have those "wicked
+The movie was full of cringe-inducing imagery about the death of a character, and I did feel
+The movie was full of "dudes who are gay, but who are straight" and was also
+
+
+
+🔹 temperature < 1（例：0.5）
+
+確率差が強調される
+→ 安定した生成
+
+🔹 temperature = 1
+
+元の確率のまま
+
+🔹 temperature > 1（例：1.5）
+
+確率が平坦になる
+→ ランダム性UP（創造的）

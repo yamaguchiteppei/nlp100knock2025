@@ -1,0 +1,31 @@
+tokenizer_config.json: 100%|████████████████████████████████████████████████████████| 26.0/26.0 [00:00<00:00, 59.9kB/s]
+vocab.json: 100%|█████████████████████████████████████████████████████████████████| 1.04M/1.04M [00:00<00:00, 2.34MB/s]
+merges.txt: 100%|███████████████████████████████████████████████████████████████████| 456k/456k [00:00<00:00, 1.64MB/s]
+tokenizer.json: 100%|█████████████████████████████████████████████████████████████| 1.36M/1.36M [00:00<00:00, 1.95MB/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+config.json: 100%|████████████████████████████████████████████████████████████████████| 665/665 [00:00<00:00, 1.73MB/s]
+model.safetensors: 100%|████████████████████████████████████████████████████████████| 548M/548M [00:18<00:00, 29.0MB/s]
+Loading weights: 100%|██████████████████| 148/148 [00:00<00:00, 801.18it/s, Materializing param=transformer.wte.weight]
+GPT2LMHeadModel LOAD REPORT from: gpt2
+Key                  | Status     |  | 
+---------------------+------------+--+-
+h.{0...11}.attn.bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+generation_config.json: 100%|██████████████████████████████████████████████████████████| 124/124 [00:00<00:00, 337kB/s]
+=== Tokenization ===
+Tokens : ['The', 'Ġmovie', 'Ġwas', 'Ġfull', 'Ġof']
+Token IDs : [464, 3807, 373, 1336, 286]
+
+=== Top 10 Next Tokens ===
+ 1: Token: ' jokes'  |  Probability: 0.021892
+ 2: Token: ' great'  |  Probability: 0.018644
+ 3: Token: ' laughs'  |  Probability: 0.011524
+ 4: Token: ' bad'  |  Probability: 0.010874
+ 5: Token: ' surprises'  |  Probability: 0.010667
+ 6: Token: ' references'  |  Probability: 0.010528
+ 7: Token: ' fun'  |  Probability: 0.009992
+ 8: Token: ' humor'  |  Probability: 0.007415
+ 9: Token: ' "'  |  Probability: 0.007408
+10: Token: ' the'  |  Probability: 0.006709

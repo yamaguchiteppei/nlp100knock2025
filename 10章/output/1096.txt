@@ -1,0 +1,12 @@
+$ python3 1096.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|██████████████████| 148/148 [00:00<00:00, 2334.03it/s, Materializing param=transformer.wte.weight]
+GPT2LMHeadModel LOAD REPORT from: gpt2
+Key                  | Status     |  | 
+---------------------+------------+--+-
+h.{0...11}.attn.bias | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+100%|█████████████████████████████████████████████████████████████████████████████████| 872/872 [00:38<00:00, 22.42it/s]
+Accuracy: 0.5
