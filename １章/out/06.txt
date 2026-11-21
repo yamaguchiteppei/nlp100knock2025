@@ -1,0 +1,7 @@
+X: {'ap', 'pa', 'ra', 'is', 'di', 'ad', 'se', 'ar'}
+Y: {'ap', 'gr', 'pa', 'ra', 'ph', 'ag', 'ar'}
+X ∨ Y: {'ap', 'gr', 'pa', 'ra', 'is', 'ph', 'di', 'ad', 'ag', 'se','ar'}
+X ∧ Y: {'ap', 'pa', 'ra', 'ar'}
+X - Y: {'is', 'se', 'di', 'ad'}
+'se' in X: True
+'se' in Y: False

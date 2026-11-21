@@ -1,7 +1,3 @@
-"""05. n-gram
-与えられたシーケンス（文字列やリストなど）からn-gramを作る関数を作成せよ。この関数を用い、”I am an NLPer”という文から文字tri-gram、単語bi-gramを得よ。
-"""
-
 s = "I am an NLPer"
 
 def str_n_gram(str,n):

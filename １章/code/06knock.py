@@ -1,8 +1,3 @@
-"""06. 集合
-“paraparaparadise”と”paragraph”に含まれる文字bi-gramの集合を、それぞれ, 
-XとYとして求め、XとYの和集合（X∨Y）、積集合（X∧Y）、差集合（X\Y）を求めよ。さらに、’se’というbi-gramがXおよびYに含まれるかどうかを調べよ。
-"""
-
 s1 = "paraparaparadise"
 s2 = "paragraph"
 

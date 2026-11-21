@@ -1,0 +1,4 @@
+文字tri-gram:
+['I a', ' am', 'am ', 'm a', ' an', 'an ', 'n N', ' NL', 'NLP', 'LPe', 'Per']
+単語bi-gram:
+[['I', 'am'], ['am', 'an'], ['an', 'NLPer']]
